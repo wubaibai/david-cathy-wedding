@@ -1,0 +1,811 @@
+/* -- LESS PLUG IN
+----- 這些都可以當 function 來用。
+----------------------------------------*/
+	.text-shadow (@string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+		text-shadow: @string;
+	}
+	.box-shadow (@string) {
+		-webkit-box-shadow: @string;
+		-moz-box-shadow:    @string;
+		box-shadow:         @string;
+	}
+	.drop-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+		-webkit-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+		-moz-box-shadow:	@x @y @blur @spread rgba(0, 0, 0, @alpha);
+		box-shadow:		@x @y @blur @spread rgba(0, 0, 0, @alpha);
+	}
+	.inner-shadow (@x: 0, @y: 1px, @blur: 2px, @spread: 0, @alpha: 0.25) {
+		-webkit-box-shadow: inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+		-moz-box-shadow:    inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+		box-shadow:         inset @x @y @blur @spread rgba(0, 0, 0, @alpha);
+	}
+	.box-sizing (@type: border-box) {
+		-webkit-box-sizing: @type;
+		-moz-box-sizing:    @type;
+		box-sizing:         @type;
+	}
+	.border-radius (@radius: 5px) {
+		-webkit-border-radius: @radius;
+		-moz-border-radius:    @radius;
+		border-radius:         @radius;
+
+		-moz-background-clip:    padding;
+		-webkit-background-clip: padding-box;
+		background-clip:         padding-box;
+	}
+	.border-radiuses (@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+		-webkit-border-top-right-radius:    @topright;
+		-webkit-border-bottom-right-radius: @bottomright;
+		-webkit-border-bottom-left-radius:  @bottomleft;
+		-webkit-border-top-left-radius:     @topleft;
+
+		-moz-border-radius-topright:        @topright;
+		-moz-border-radius-bottomright:     @bottomright;
+		-moz-border-radius-bottomleft:      @bottomleft;
+		-moz-border-radius-topleft:         @topleft;
+
+		border-top-right-radius:            @topright;
+		border-bottom-right-radius:         @bottomright;
+		border-bottom-left-radius:          @bottomleft;
+		border-top-left-radius:             @topleft;
+
+		-moz-background-clip:    padding; 
+		-webkit-background-clip: padding-box; 
+		background-clip:         padding-box; 
+	}
+	.opacity (@opacity) {
+	    @opacityPercentage: @opacity * 100;
+	    opacity: @opacity;
+	    -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=(@{opacityPercentage}))"; 
+	    filter: ~"alpha(opacity = (@{opacityPercentage}))";
+	}
+	.gradient (@startColor: #eee, @endColor: white) {
+		background-color: @startColor;
+		background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+		background: -webkit-linear-gradient(top, @startColor, @endColor);
+		background: -moz-linear-gradient(top, @startColor, @endColor);
+		background: -ms-linear-gradient(top, @startColor, @endColor);
+		background: -o-linear-gradient(top, @startColor, @endColor);
+	}
+	.horizontal-gradient (@startColor: #eee, @endColor: white) {
+	 	background-color: @startColor;
+		background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+		background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+		background-image: -moz-linear-gradient(left, @startColor, @endColor);
+		background-image: -ms-linear-gradient(left, @startColor, @endColor);
+		background-image: -o-linear-gradient(left, @startColor, @endColor);
+	}
+	.animation (@name, @duration: 300ms, @delay: 0, @ease: ease) {
+		-webkit-animation: @name @duration @delay @ease;
+		-moz-animation:    @name @duration @delay @ease;
+		-ms-animation:     @name @duration @delay @ease;
+	}
+	.transition (@transition) {
+		-webkit-transition: @transition;  
+		-moz-transition:    @transition;
+		-ms-transition:     @transition; 
+		-o-transition:      @transition;  
+	}
+	.transform(@string){
+		-webkit-transform: @string;
+		-moz-transform: 	 @string;
+		-ms-transform: 		 @string;
+		-o-transform: 		 @string;
+	}
+	.scale (@factor) {
+		-webkit-transform: scale(@factor);
+		-moz-transform: 	 scale(@factor);
+		-ms-transform: 		 scale(@factor);
+		-o-transform: 		 scale(@factor);
+	}
+	.rotate (@deg) {
+		-webkit-transform: rotate(@deg);
+		-moz-transform: 	 rotate(@deg);
+		-ms-transform: 		 rotate(@deg);
+		-o-transform: 		 rotate(@deg);
+	}
+	.skew (@deg, @deg2) {
+		-webkit-transform:       skew(@deg, @deg2);
+		-moz-transform: 	 skew(@deg, @deg2);
+		-ms-transform: 		 skew(@deg, @deg2);
+		-o-transform: 		 skew(@deg, @deg2);
+	}
+	.translate (@x, @y:0) {
+		-webkit-transform:       translate(@x, @y);
+		-moz-transform: 	 translate(@x, @y);
+		-ms-transform: 		 translate(@x, @y);
+		-o-transform: 		 translate(@x, @y);
+	}
+	.translate3d (@x, @y: 0, @z: 0) {
+		-webkit-transform:       translate3d(@x, @y, @z);
+		-moz-transform: 	 translate3d(@x, @y, @z);
+		-ms-transform: 		 translate3d(@x, @y, @z);
+		-o-transform: 		 translate3d(@x, @y, @z);
+	}
+	.perspective (@value: 1000) {
+		-webkit-perspective: 	@value;
+		-moz-perspective: 	@value;
+		-ms-perspective: 	@value;
+		perspective: 		@value;
+	}
+	.transform-origin (@x:center, @y:center) {
+		-webkit-transform-origin: @x @y;
+		-moz-transform-origin:    @x @y;
+		-ms-transform-origin:     @x @y;
+		-o-transform-origin:      @x @y;
+	}
+
+/* -- Universal Setting & Reset CSS
+--------------------------------------------------*/
+
+@theWhite : #ffffff;
+@theYellow : #f1d032;
+@theYellowD : #ffb600;
+@theGray: #7c7e83;
+
+body {
+	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif,"Apple LiGothic","微軟正黑體","Microsoft JhengHei";
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	background-color: #424241;
+	position: relative;
+	overflow: hidden;
+
+	// background-image: url(../images/bgsample.jpg);
+	// background-position: 50% 50%;
+	// background-size: auto 100%;
+	// background-repeat: no-repeat;
+}
+
+a{
+	color: @theGray;
+	font-family: 'Times New Roman';
+	border-bottom: #ababab 1px dotted;
+}
+
+a,
+a:active,
+a:focus{
+	color: @theGray;
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover{
+	color: darken(@theGray, 30%);
+	text-decoration: none;
+}
+
+a.btnlink{
+	border-bottom: none;
+	border: fadeOut(@theGray,50%) 1px solid;
+	padding: 4px 8px;
+	display: inline-block;
+}
+a.btnlink:hover{
+	background-color: @theGray;
+	color: @theWhite;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-weight: 400;
+	line-height: 1.4;
+}
+
+::selection {
+	background:transparent;
+}
+
+::-moz-selection {
+	background:transparent;
+}
+
+/* -- Align & Float
+----------------------------------------*/
+.center{ text-align: center;}
+.left{ text-align: left;}
+.right{ text-align: right;}
+.f-left{ float: left; }
+.f-right{ float: right; }
+.clear-both{
+	width: 100%;
+	height: 1px;
+	overflow: hidden;
+	clear: both;
+}
+
+.popover{
+	background-color:@theGray;
+	font-size: 14px;
+	line-height: 1.5;
+	padding: 5px 30px;
+	border: none;
+	text-align: center;
+	z-index: 1030;
+	.border-radius(30px);
+	.popover-title{
+		padding: 0px;
+		border: 0px;
+		background: transparent;
+		color: @theYellow;
+	}
+	.popover-content{
+		font-size: 12px;
+		padding: 0px;
+		border: 0px;
+		color: @theWhite;
+	}
+}
+
+.modal{
+	.modal-dialog{
+		width: 100%;
+		height: 100%;
+		margin: 0px;
+		background-color: @theGray;
+		overflow: hidden;
+		.box-sizing(border-box);
+		padding: 60px;
+		.closer{
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			cursor: pointer;
+		}
+		.modal-content{
+			width: 100%;
+			height: 100%;
+			max-width: 900px;
+			padding: 0px 20px;
+			margin-right: auto;
+			margin-left: auto;
+			.box-shadow(none);
+			.border-radius(10px);
+			border: none;
+			display: block;
+			background-color: @theWhite;
+			.modal-title{
+				height: auto;
+				text-align: center;
+				color: @theYellow;
+				font-size: 20px;
+				padding: 20px 0px 10px 0px;
+				> div {
+					padding: 0px 6px 4px 6px;
+					border-bottom: @theYellow 3px solid;
+					display: inline-block;
+				}
+			}
+			.modal-body{
+				color: #666;
+			}
+		}
+	}
+}
+
+/* -- Layout 
+----------------------------------------*/
+#loading{
+	position: absolute;
+	z-index: 99;
+	width: 100%;
+	height: 100%;
+	background-color: @theGray;
+	.loading-content{
+		margin: 0px auto;
+		display: block;
+		width: 100%;
+		height: 100%;
+		.box-sizing(border-box);
+		background: url(../images/welcome.jpg);
+		background-size: auto 100%;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+
+		text-align: center;
+		padding-top: 80px;
+	}
+}
+
+#buntingR{
+	position: absolute;
+	top: -1px;
+	left: 50%;
+	margin-left: 45px;
+	z-index: 50;
+}
+#buntingL{
+	position: absolute;
+	top: -1px;
+	left: auto;
+	right: 50%;
+	margin-right: 45px;
+	z-index: 50;
+}
+
+.animate{
+	.transition(all 1s);
+}
+
+.item{
+	.opacity(0);
+	&.active{
+		.opacity(1);
+		.transition(all 0.5s);
+	}
+	&:hover{
+		cursor: pointer;
+		// -webkit-filter: drop-shadow(0px 2px 12px rgba(253,224,94,0.9));
+		-webkit-filter: drop-shadow(0px 1px 3px rgba(253,224,94,0.8));
+		.transition(none 1s);
+		// filter: url(#drop-shadow);
+		// -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=6, OffY=6, Color='#f1d03c')";
+		// filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=6, OffY=6, Color='#f1d03c')";
+	}
+}
+
+.wall{
+	width: 100%;
+	height: calc(~'100vh - 80px');
+	display: block;
+	min-height: 570px;
+
+	> div {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+	}
+
+	.blackboard-wrapper{
+		margin-left: -210px;
+		margin-top: -250px;
+		width: 220px;
+		height: 548px;
+		z-index: 2;
+		#blackboard{
+		}
+		#ring,#vow,#memory,#thanks,#ps4{
+			position: absolute;
+		}
+		#ring{
+			bottom: 215px;
+			left: 40px;
+		}
+		#vow{
+			bottom: 155px;
+			left: 70px;
+		}
+		#memory{
+			bottom: 100px;
+			left: 30px;
+		}
+		#thanks{
+			bottom: 50px;
+			left: 70px;
+		}
+		#ps4{
+			bottom: -10px;
+			left: -50px;
+		}
+	}
+	.stage-wrapper{
+		width: 600px;
+		height: 300px;
+		margin-left: -50px;
+		margin-top: 25px;
+		z-index: 3;
+		#stage,#cathy,#david,.screen-wrapper,#video,#playicon,#weddingphoto,#singup{
+			position: absolute;
+		}
+		#stage{
+			bottom: 0px;
+		}
+		#cathy{
+			left: 140px;
+		}
+		#david{
+			left: 40px;
+		}
+		#weddingphoto{
+			right: 0px;
+			bottom: 15px;
+		}
+		.screen-wrapper{
+			right: 35px;
+			top: 10px;
+			&.leave{
+				right: -100%;
+			}
+			#video{
+				top: 5px;
+				right: 10px;
+			}
+			#playicon{
+				top: 70px;
+				right: 120px;
+			}
+		}
+		#singup{
+			right: 280px;
+			bottom:35px;
+		}
+	}
+	.right-wrapper{
+		width: 500px;
+		height: 240px;
+		margin-left: 18px;
+		margin-top: -230px;
+		.shelf-wrapper,
+		#shelf,
+		#certificate,
+		#inviteBunun,
+		#inviteTaipei,
+		#proposeTshirt,
+		#giftCup,
+		#littlema,
+		#lulu,
+		#heilulu,
+		#baseball,
+		#woodbox{
+			position: absolute;
+		}
+		.shelf-wrapper{
+			bottom: 0px;
+			width: 100%;
+			height: 140px;
+			#certificate,
+			#inviteBunun,
+			#inviteTaipei,
+			#proposeTshirt,
+			#giftCup,
+			#littlema,
+			#lulu,
+			#heilulu{
+				bottom: 10px;
+			}
+			#shelf{
+				bottom: 0px;
+			}
+			#certificate{
+				left: 2px;
+			}
+			#inviteBunun{
+				left: 108px;
+			}
+			#inviteTaipei{
+				left: 175px;
+			}
+			#proposeTshirt{
+				left: 240px;
+			}
+			#giftCup{
+				left: 335px;
+			}
+			#littlema{
+				left: 390px;
+			}
+			#lulu{
+				left: 425px;
+			}
+			#heilulu{
+				left: 455px;
+			}
+		}
+		#baseball{
+			top: 5px;
+			left: 40px;
+		}
+		#woodbox{
+			right: 0px;
+			top: -5px;
+		}
+	}
+	.left-wrapper{
+		width: 270px;
+		height: 270px;
+		left: auto;
+		right: 50%;
+		margin-right: 250px;
+		margin-top: -280px;
+		.shelf-wrapper-top,
+		.shelf-wrapper-bottom{
+			position: absolute;
+			width: 100%;
+			> .shelfshort{
+				bottom: 0px;
+				position: absolute;
+			}
+			> .item{
+				bottom: 10px;
+				position: absolute;
+			}
+		}
+		.shelf-wrapper-top{
+			bottom: 128px;
+			height: 150px;
+			#ishigaki,
+			#proposerecord{
+				position: absolute;
+			}
+			#ishigaki{
+				left: 20px;
+			}
+			#proposerecord{
+				left: 110px;
+			}
+		}
+		.shelf-wrapper-bottom{
+			bottom: 0px;
+			height: 122px;
+			#ohmygodwife,
+			#ohmygodhusband,
+			#ohmygod{
+				position: absolute;
+			}
+			#ohmygodwife{
+				left: 15px;
+			}
+			#ohmygodhusband{
+				left: 97px;
+			}
+			#ohmygod{
+				left: 180px;
+			}
+		}
+	}
+	.leftDeco-wrapper{
+		width: 300px;
+		height: 300px;
+		left: auto;
+		right: 50%;
+		margin-right: 226px;
+		.exhibit-wrapper,.event-wrapper{
+			width: 100%;
+			height: 160px;
+		}
+		.exhibit-wrapper{
+			position: relative;
+			#wordcloud,
+			#artcraft,
+			#cuppics{
+				position: absolute;
+			}
+			#wordcloud{
+				left: 0px;
+				top: 10px;
+			}
+			#artcraft{
+				right: 5px;
+				top: 12px;
+			}
+			#cuppics{
+				right: 0px;
+				top: 70px;
+			}
+		}
+		.event-wrapper{
+			margin-top: -20px;
+			height: 188px;
+			position: relative;
+			.photocall-wrapper,
+			.bouquet-wrapper{
+				position: absolute;
+			}
+			.photocall-wrapper{
+				left: 8px;
+				#photocall{
+					position: absolute;
+					bottom: 0px;
+					left: 25px;
+				}
+			}
+			.bouquet-wrapper{
+				width: 150px;
+				height: 133px;
+				bottom: 40px;
+				right: 0px;
+				z-index: 1;
+			}
+		}
+	}
+}
+
+.floor{
+	width: 100%;
+	height: 80px;
+	display: block;
+	background-color: #222222;
+}
+
+
+
+/* -- Unique Content
+--------------------------------------------------*/
+#thanksModal{
+	.people{
+		margin-bottom: 10px;
+		.usr-title{
+			color: #999;
+			margin-right: 5px;
+			width: 90px;
+			text-align: right;
+			display: inline-block;
+			font-size: 13px;
+		}
+		.usr-name{
+			width: 170px;
+			display: inline-block;
+			margin-left: 5px;
+			text-align: left;
+			font-size: 14px;
+		}
+	}
+}
+#vowModal{
+	.vow-content{
+		width: 44%;
+		float: left;
+		text-align: left;
+		margin: 0px 3%;
+		font-size: 13px;
+
+		>div{
+			margin-bottom: 15px;
+			text-align: justify;
+		}
+		.vow-user{
+			margin-top: -40px;
+			margin-bottom: 30px;
+			text-align: center;
+		}
+	}
+}
+.modal{
+	.photo-wrapper{
+		width: 100%;
+		.photo-viewer{
+			margin-bottom: 15px;
+			text-align: center;
+			position: relative;
+			.pimg{
+				> img,
+				> iframe  {
+					max-width: 100%;
+					max-height: 370px;
+					min-height: 200px;
+					.border-radius(4px);
+					border: fadeOut(@theGray,80%) 1px solid;
+				}
+			}
+			.pinfo{
+				width: 100%;
+				text-align: center;
+				margin-bottom: 10px;
+				color: @theGray;
+				line-height: 1.2;
+			}
+		}
+		.photo-thumb{
+			text-align: center;
+			.thumbnail{
+				width: 90px;
+				height: 50px;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				margin: 0px 4px;
+				display: inline-block;
+				border: fadeOut(@theGray,50%) 1px solid;
+				.opacity(0);
+				.transition(opacity 1s);
+				.border-radius(4px);
+				cursor: pointer;
+			}
+			.thumbnail.port{
+				width: 40px;
+			}
+			.thumbnail.showed{
+				.opacity(0.5);
+			}
+			.thumbnail:hover,
+			.thumbnail.active{
+				.opacity(1);
+			}
+			.thumbnail.rect{
+				height: 154px;
+				width: 154px;
+			}
+		}
+	}
+	.photo-wrapper-small{
+		float: left;
+		width: 58%;
+		.photo-thumb{
+			.thumbnail{
+				width: 60px;
+				height: 35px;
+			}
+		}
+	}
+	.photo-wrapper-xsmall{
+		float: left;
+		width: 52%;
+		.photo-thumb{
+			.thumbnail{
+				width: 60px;
+				height: 35px;
+			}
+		}
+	}
+	.photo-wrapper.hidethumb{
+		.photo-viewer{
+			.pimg{
+				> img {
+					max-height: 410px;
+				}
+			}
+		}
+		.photo-thumb{
+			display: none;
+		}
+	}
+	.detail-text{
+		float: right;
+		width: 38%;
+		letter-spacing: 1px;
+		border: fadeout(@theYellow, 50%) 4px solid;
+		.box-sizing(border-box);
+		padding: 15px;
+		margin-top: 10px;
+		.detail-title{
+			height: auto;
+			text-align: center;
+			color: @theYellow;
+			font-size: 20px;
+			padding: 0px 0px 10px 0px;
+			> div {
+				padding: 0px 6px 4px 6px;
+				border-bottom: @theYellow 3px solid;
+				display: inline-block;
+			}
+		}
+		.each-detail{
+			display: none;
+		}
+		.each-detail.active{
+			display: block;
+		}
+	}
+	.detail-text-lg{
+		width: 44%;
+	}
+}
+
+
+/* -- Responsive
+--------------------------------------------------*/
+/* Portrait tablet to landscape and desktop */
+@media all and (max-width:980px){
+	.center-content{
+		width: 96%;
+		padding: 2%;
+	}
+}
+
+/* Landscape phone to portrait tablet */
+@media all and (max-width:720px){
+}
+
+/* Landscape phones and down */
+@media all and (max-width:480px){
+}
+
+
+
+
+
+
+
+
+
+

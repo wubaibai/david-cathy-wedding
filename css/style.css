@@ -1,0 +1,685 @@
+/* -- LESS PLUG IN
+----- 這些都可以當 function 來用。
+----------------------------------------*/
+/* -- Universal Setting & Reset CSS
+--------------------------------------------------*/
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple LiGothic", "微軟正黑體", "Microsoft JhengHei";
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  background-color: #424241;
+  position: relative;
+  overflow: hidden;
+}
+a {
+  color: #7c7e83;
+  font-family: 'Times New Roman';
+  border-bottom: #ababab 1px dotted;
+}
+a,
+a:active,
+a:focus {
+  color: #7c7e83;
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover {
+  color: #323234;
+  text-decoration: none;
+}
+a.btnlink {
+  border-bottom: none;
+  border: rgba(124, 126, 131, 0.5) 1px solid;
+  padding: 4px 8px;
+  display: inline-block;
+}
+a.btnlink:hover {
+  background-color: #7c7e83;
+  color: #ffffff;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  line-height: 1.4;
+}
+::selection {
+  background: transparent;
+}
+::-moz-selection {
+  background: transparent;
+}
+/* -- Align & Float
+----------------------------------------*/
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.f-left {
+  float: left;
+}
+.f-right {
+  float: right;
+}
+.clear-both {
+  width: 100%;
+  height: 1px;
+  overflow: hidden;
+  clear: both;
+}
+.popover {
+  background-color: #7c7e83;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 5px 30px;
+  border: none;
+  text-align: center;
+  z-index: 1030;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.popover .popover-title {
+  padding: 0px;
+  border: 0px;
+  background: transparent;
+  color: #f1d032;
+}
+.popover .popover-content {
+  font-size: 12px;
+  padding: 0px;
+  border: 0px;
+  color: #ffffff;
+}
+.modal .modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  background-color: #7c7e83;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 60px;
+}
+.modal .modal-dialog .closer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.modal .modal-dialog .modal-content {
+  width: 100%;
+  height: 100%;
+  max-width: 900px;
+  padding: 0px 20px;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: none;
+  display: block;
+  background-color: #ffffff;
+}
+.modal .modal-dialog .modal-content .modal-title {
+  height: auto;
+  text-align: center;
+  color: #f1d032;
+  font-size: 20px;
+  padding: 20px 0px 10px 0px;
+}
+.modal .modal-dialog .modal-content .modal-title > div {
+  padding: 0px 6px 4px 6px;
+  border-bottom: #f1d032 3px solid;
+  display: inline-block;
+}
+.modal .modal-dialog .modal-content .modal-body {
+  color: #666;
+}
+/* -- Layout 
+----------------------------------------*/
+#loading {
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: #7c7e83;
+}
+#loading .loading-content {
+  margin: 0px auto;
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: url(../images/welcome.jpg);
+  background-size: auto 100%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding-top: 80px;
+}
+#buntingR {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  margin-left: 45px;
+  z-index: 50;
+}
+#buntingL {
+  position: absolute;
+  top: -1px;
+  left: auto;
+  right: 50%;
+  margin-right: 45px;
+  z-index: 50;
+}
+.animate {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+}
+.item {
+  opacity: 0;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=(0));
+  filter: alpha(opacity = (0));
+}
+.item.active {
+  opacity: 1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=(100));
+  filter: alpha(opacity = (100));
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+.item:hover {
+  cursor: pointer;
+  -webkit-filter: drop-shadow(0px 1px 3px rgba(253, 224, 94, 0.8));
+  -webkit-transition: none 1s;
+  -moz-transition: none 1s;
+  -ms-transition: none 1s;
+  -o-transition: none 1s;
+}
+.wall {
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: block;
+  min-height: 570px;
+}
+.wall > div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.wall .blackboard-wrapper {
+  margin-left: -210px;
+  margin-top: -250px;
+  width: 220px;
+  height: 548px;
+  z-index: 2;
+}
+.wall .blackboard-wrapper #ring,
+.wall .blackboard-wrapper #vow,
+.wall .blackboard-wrapper #memory,
+.wall .blackboard-wrapper #thanks,
+.wall .blackboard-wrapper #ps4 {
+  position: absolute;
+}
+.wall .blackboard-wrapper #ring {
+  bottom: 215px;
+  left: 40px;
+}
+.wall .blackboard-wrapper #vow {
+  bottom: 155px;
+  left: 70px;
+}
+.wall .blackboard-wrapper #memory {
+  bottom: 100px;
+  left: 30px;
+}
+.wall .blackboard-wrapper #thanks {
+  bottom: 50px;
+  left: 70px;
+}
+.wall .blackboard-wrapper #ps4 {
+  bottom: -10px;
+  left: -50px;
+}
+.wall .stage-wrapper {
+  width: 600px;
+  height: 300px;
+  margin-left: -50px;
+  margin-top: 25px;
+  z-index: 3;
+}
+.wall .stage-wrapper #stage,
+.wall .stage-wrapper #cathy,
+.wall .stage-wrapper #david,
+.wall .stage-wrapper .screen-wrapper,
+.wall .stage-wrapper #video,
+.wall .stage-wrapper #playicon,
+.wall .stage-wrapper #weddingphoto,
+.wall .stage-wrapper #singup {
+  position: absolute;
+}
+.wall .stage-wrapper #stage {
+  bottom: 0px;
+}
+.wall .stage-wrapper #cathy {
+  left: 140px;
+}
+.wall .stage-wrapper #david {
+  left: 40px;
+}
+.wall .stage-wrapper #weddingphoto {
+  right: 0px;
+  bottom: 15px;
+}
+.wall .stage-wrapper .screen-wrapper {
+  right: 35px;
+  top: 10px;
+}
+.wall .stage-wrapper .screen-wrapper.leave {
+  right: -100%;
+}
+.wall .stage-wrapper .screen-wrapper #video {
+  top: 5px;
+  right: 10px;
+}
+.wall .stage-wrapper .screen-wrapper #playicon {
+  top: 70px;
+  right: 120px;
+}
+.wall .stage-wrapper #singup {
+  right: 280px;
+  bottom: 35px;
+}
+.wall .right-wrapper {
+  width: 500px;
+  height: 240px;
+  margin-left: 18px;
+  margin-top: -230px;
+}
+.wall .right-wrapper .shelf-wrapper,
+.wall .right-wrapper #shelf,
+.wall .right-wrapper #certificate,
+.wall .right-wrapper #inviteBunun,
+.wall .right-wrapper #inviteTaipei,
+.wall .right-wrapper #proposeTshirt,
+.wall .right-wrapper #giftCup,
+.wall .right-wrapper #littlema,
+.wall .right-wrapper #lulu,
+.wall .right-wrapper #heilulu,
+.wall .right-wrapper #baseball,
+.wall .right-wrapper #woodbox {
+  position: absolute;
+}
+.wall .right-wrapper .shelf-wrapper {
+  bottom: 0px;
+  width: 100%;
+  height: 140px;
+}
+.wall .right-wrapper .shelf-wrapper #certificate,
+.wall .right-wrapper .shelf-wrapper #inviteBunun,
+.wall .right-wrapper .shelf-wrapper #inviteTaipei,
+.wall .right-wrapper .shelf-wrapper #proposeTshirt,
+.wall .right-wrapper .shelf-wrapper #giftCup,
+.wall .right-wrapper .shelf-wrapper #littlema,
+.wall .right-wrapper .shelf-wrapper #lulu,
+.wall .right-wrapper .shelf-wrapper #heilulu {
+  bottom: 10px;
+}
+.wall .right-wrapper .shelf-wrapper #shelf {
+  bottom: 0px;
+}
+.wall .right-wrapper .shelf-wrapper #certificate {
+  left: 2px;
+}
+.wall .right-wrapper .shelf-wrapper #inviteBunun {
+  left: 108px;
+}
+.wall .right-wrapper .shelf-wrapper #inviteTaipei {
+  left: 175px;
+}
+.wall .right-wrapper .shelf-wrapper #proposeTshirt {
+  left: 240px;
+}
+.wall .right-wrapper .shelf-wrapper #giftCup {
+  left: 335px;
+}
+.wall .right-wrapper .shelf-wrapper #littlema {
+  left: 390px;
+}
+.wall .right-wrapper .shelf-wrapper #lulu {
+  left: 425px;
+}
+.wall .right-wrapper .shelf-wrapper #heilulu {
+  left: 455px;
+}
+.wall .right-wrapper #baseball {
+  top: 5px;
+  left: 40px;
+}
+.wall .right-wrapper #woodbox {
+  right: 0px;
+  top: -5px;
+}
+.wall .left-wrapper {
+  width: 270px;
+  height: 270px;
+  left: auto;
+  right: 50%;
+  margin-right: 250px;
+  margin-top: -280px;
+}
+.wall .left-wrapper .shelf-wrapper-top,
+.wall .left-wrapper .shelf-wrapper-bottom {
+  position: absolute;
+  width: 100%;
+}
+.wall .left-wrapper .shelf-wrapper-top > .shelfshort,
+.wall .left-wrapper .shelf-wrapper-bottom > .shelfshort {
+  bottom: 0px;
+  position: absolute;
+}
+.wall .left-wrapper .shelf-wrapper-top > .item,
+.wall .left-wrapper .shelf-wrapper-bottom > .item {
+  bottom: 10px;
+  position: absolute;
+}
+.wall .left-wrapper .shelf-wrapper-top {
+  bottom: 128px;
+  height: 150px;
+}
+.wall .left-wrapper .shelf-wrapper-top #ishigaki,
+.wall .left-wrapper .shelf-wrapper-top #proposerecord {
+  position: absolute;
+}
+.wall .left-wrapper .shelf-wrapper-top #ishigaki {
+  left: 20px;
+}
+.wall .left-wrapper .shelf-wrapper-top #proposerecord {
+  left: 110px;
+}
+.wall .left-wrapper .shelf-wrapper-bottom {
+  bottom: 0px;
+  height: 122px;
+}
+.wall .left-wrapper .shelf-wrapper-bottom #ohmygodwife,
+.wall .left-wrapper .shelf-wrapper-bottom #ohmygodhusband,
+.wall .left-wrapper .shelf-wrapper-bottom #ohmygod {
+  position: absolute;
+}
+.wall .left-wrapper .shelf-wrapper-bottom #ohmygodwife {
+  left: 15px;
+}
+.wall .left-wrapper .shelf-wrapper-bottom #ohmygodhusband {
+  left: 97px;
+}
+.wall .left-wrapper .shelf-wrapper-bottom #ohmygod {
+  left: 180px;
+}
+.wall .leftDeco-wrapper {
+  width: 300px;
+  height: 300px;
+  left: auto;
+  right: 50%;
+  margin-right: 226px;
+}
+.wall .leftDeco-wrapper .exhibit-wrapper,
+.wall .leftDeco-wrapper .event-wrapper {
+  width: 100%;
+  height: 160px;
+}
+.wall .leftDeco-wrapper .exhibit-wrapper {
+  position: relative;
+}
+.wall .leftDeco-wrapper .exhibit-wrapper #wordcloud,
+.wall .leftDeco-wrapper .exhibit-wrapper #artcraft,
+.wall .leftDeco-wrapper .exhibit-wrapper #cuppics {
+  position: absolute;
+}
+.wall .leftDeco-wrapper .exhibit-wrapper #wordcloud {
+  left: 0px;
+  top: 10px;
+}
+.wall .leftDeco-wrapper .exhibit-wrapper #artcraft {
+  right: 5px;
+  top: 12px;
+}
+.wall .leftDeco-wrapper .exhibit-wrapper #cuppics {
+  right: 0px;
+  top: 70px;
+}
+.wall .leftDeco-wrapper .event-wrapper {
+  margin-top: -20px;
+  height: 188px;
+  position: relative;
+}
+.wall .leftDeco-wrapper .event-wrapper .photocall-wrapper,
+.wall .leftDeco-wrapper .event-wrapper .bouquet-wrapper {
+  position: absolute;
+}
+.wall .leftDeco-wrapper .event-wrapper .photocall-wrapper {
+  left: 8px;
+}
+.wall .leftDeco-wrapper .event-wrapper .photocall-wrapper #photocall {
+  position: absolute;
+  bottom: 0px;
+  left: 25px;
+}
+.wall .leftDeco-wrapper .event-wrapper .bouquet-wrapper {
+  width: 150px;
+  height: 133px;
+  bottom: 40px;
+  right: 0px;
+  z-index: 1;
+}
+.floor {
+  width: 100%;
+  height: 80px;
+  display: block;
+  background-color: #222222;
+}
+/* -- Unique Content
+--------------------------------------------------*/
+#thanksModal .people {
+  margin-bottom: 10px;
+}
+#thanksModal .people .usr-title {
+  color: #999;
+  margin-right: 5px;
+  width: 90px;
+  text-align: right;
+  display: inline-block;
+  font-size: 13px;
+}
+#thanksModal .people .usr-name {
+  width: 170px;
+  display: inline-block;
+  margin-left: 5px;
+  text-align: left;
+  font-size: 14px;
+}
+#vowModal .vow-content {
+  width: 44%;
+  float: left;
+  text-align: left;
+  margin: 0px 3%;
+  font-size: 13px;
+}
+#vowModal .vow-content > div {
+  margin-bottom: 15px;
+  text-align: justify;
+}
+#vowModal .vow-content .vow-user {
+  margin-top: -40px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.modal .photo-wrapper {
+  width: 100%;
+}
+.modal .photo-wrapper .photo-viewer {
+  margin-bottom: 15px;
+  text-align: center;
+  position: relative;
+}
+.modal .photo-wrapper .photo-viewer .pimg > img,
+.modal .photo-wrapper .photo-viewer .pimg > iframe {
+  max-width: 100%;
+  max-height: 370px;
+  min-height: 200px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: rgba(124, 126, 131, 0.19999999999999996) 1px solid;
+}
+.modal .photo-wrapper .photo-viewer .pinfo {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #7c7e83;
+  line-height: 1.2;
+}
+.modal .photo-wrapper .photo-thumb {
+  text-align: center;
+}
+.modal .photo-wrapper .photo-thumb .thumbnail {
+  width: 90px;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0px 4px;
+  display: inline-block;
+  border: rgba(124, 126, 131, 0.5) 1px solid;
+  opacity: 0;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=(0));
+  filter: alpha(opacity = (0));
+  -webkit-transition: opacity 1s;
+  -moz-transition: opacity 1s;
+  -ms-transition: opacity 1s;
+  -o-transition: opacity 1s;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  cursor: pointer;
+}
+.modal .photo-wrapper .photo-thumb .thumbnail.port {
+  width: 40px;
+}
+.modal .photo-wrapper .photo-thumb .thumbnail.showed {
+  opacity: 0.5;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=(50));
+  filter: alpha(opacity = (50));
+}
+.modal .photo-wrapper .photo-thumb .thumbnail:hover,
+.modal .photo-wrapper .photo-thumb .thumbnail.active {
+  opacity: 1;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=(100));
+  filter: alpha(opacity = (100));
+}
+.modal .photo-wrapper .photo-thumb .thumbnail.rect {
+  height: 154px;
+  width: 154px;
+}
+.modal .photo-wrapper-small {
+  float: left;
+  width: 58%;
+}
+.modal .photo-wrapper-small .photo-thumb .thumbnail {
+  width: 60px;
+  height: 35px;
+}
+.modal .photo-wrapper-xsmall {
+  float: left;
+  width: 52%;
+}
+.modal .photo-wrapper-xsmall .photo-thumb .thumbnail {
+  width: 60px;
+  height: 35px;
+}
+.modal .photo-wrapper.hidethumb .photo-viewer .pimg > img {
+  max-height: 410px;
+}
+.modal .photo-wrapper.hidethumb .photo-thumb {
+  display: none;
+}
+.modal .detail-text {
+  float: right;
+  width: 38%;
+  letter-spacing: 1px;
+  border: rgba(241, 208, 50, 0.5) 4px solid;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 15px;
+  margin-top: 10px;
+}
+.modal .detail-text .detail-title {
+  height: auto;
+  text-align: center;
+  color: #f1d032;
+  font-size: 20px;
+  padding: 0px 0px 10px 0px;
+}
+.modal .detail-text .detail-title > div {
+  padding: 0px 6px 4px 6px;
+  border-bottom: #f1d032 3px solid;
+  display: inline-block;
+}
+.modal .detail-text .each-detail {
+  display: none;
+}
+.modal .detail-text .each-detail.active {
+  display: block;
+}
+.modal .detail-text-lg {
+  width: 44%;
+}
+/* -- Responsive
+--------------------------------------------------*/
+/* Portrait tablet to landscape and desktop */
+@media all and (max-width: 980px) {
+  .center-content {
+    width: 96%;
+    padding: 2%;
+  }
+}
+/* Landscape phone to portrait tablet */
+@media all and (max-width: 720px) {
+  
+}
+/* Landscape phones and down */
+@media all and (max-width: 480px) {
+  
+}
